@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     this.auth.authenticateUser(this.username, this.password) // .pipe(first())?
       .subscribe(
         data => {
-          this.router.navigate([this.redirectionURL]);
+          this.router.navigate(['/dashboard']);
         },
         error => {
           // throw a message on screen?
