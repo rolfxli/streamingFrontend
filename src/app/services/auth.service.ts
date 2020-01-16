@@ -13,6 +13,7 @@ export class AuthService {
   // post user data to server (API) with backend validation
   // (ideally retrieve boolean from server)
   authenticateUser(username: string, password: string) {
+    return "Hello";
   }
 
   // logout and clear cookies on front end

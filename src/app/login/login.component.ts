@@ -19,15 +19,26 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   loading = false;
+  redirectionURL: string;
 
-  constructor(private auth: AuthService) {
+  username = "";
+  password = "";
+
+  constructor(private auth: AuthService, 
+              private formBuilder: FormBuilder,
+              private router: Router) {
     this.loginForm = this.createFormGroup();
   }
 
   ngOnInit() {
+    // initialize the form on component initialization
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
-  // used for reactive forms (currently template-driven)
+  // alternative initialization of login form (deprecated)
   createFormGroup() {
     return new FormGroup({
       username: new FormControl(),
@@ -35,27 +46,34 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  /* in ngOnInit()
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-  */
-
   // on login form submission, begin validation and login process
-  loginUser(event) {
-    event.preventDefault();
-    const target = event.target;
-    const username = target.querySelector('#username').value;
-    const password = target.querySelector('#password').value;
+  loginUser() {
+    this.submitted = true;
+    // retrieve user login values
+    this.username = this.loginForm.controls.username.value;
+    this.password = this.loginForm.controls.password.value;
 
-    if ((username == "") || password == "") {
+    // validate against an empty submission
+    if ((this.username == "") || this.password == "") {
       return;
     }
 
-    this.auth.authenticateUser(username, password);
+    // authentication bypass for testing
+    // this.router.navigate(["/home"]);
+
+    // trigger authentication services
+    this.auth.authenticateUser(this.username, this.password)
+      .subscribe(
+        data => {
+          this.router.navigate([this.redirectionURL]);
+        },
+        error => {
+          // throw an error here?
+          this.loading = false;
+        }
+      )
 
     // debugger
-    console.log(event);
+    console.log(this.username + ' ' + this.password);
   }
 }
