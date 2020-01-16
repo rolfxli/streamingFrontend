@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService, 
               private formBuilder: FormBuilder,
               private router: Router) {
-    this.loginForm = this.createFormGroup();
+    // this.loginForm = this.createFormGroup();
   }
 
   ngOnInit() {
@@ -62,13 +62,13 @@ export class LoginComponent implements OnInit {
     // this.router.navigate(["/home"]);
 
     // trigger authentication services
-    this.auth.authenticateUser(this.username, this.password)
+    this.auth.authenticateUser(this.username, this.password) // .pipe(first())?
       .subscribe(
         data => {
           this.router.navigate([this.redirectionURL]);
         },
         error => {
-          // throw an error here?
+          // throw a message on screen?
           this.loading = false;
         }
       )

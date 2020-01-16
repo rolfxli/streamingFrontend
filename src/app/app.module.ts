@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MainTextComponent } from './home/main-text/main-text.component';
+import { HomeFooterComponent } from './home/home-footer/home-footer.component';
+import { HomeHeaderComponent } from './home/home-header/home-header.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     LoginComponent,
     DashboardComponent,
+    MainTextComponent,
+    HomeFooterComponent,
+    HomeHeaderComponent,
   ],
   imports: [
     BrowserModule,
