@@ -1,0 +1,24 @@
+@import '../../assets/utils.scss';
+
+.login-component {
+    //@include flex-center;
+    //display: flex;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+
+    .login-separator {
+        @include black-separator;
+        width: 10rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;;
+    }
+
+    .usr {
+        text-align: center;
+    }
+
+    .pswd {
+        text-align: center;
+    }
+}

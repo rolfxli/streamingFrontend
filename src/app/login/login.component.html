@@ -1,0 +1,25 @@
+<div class="login-component">
+    <h2>Login</h2>
+    <hr class="login-separator">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+        <div class="usr">
+            <label for="username">Username</label>
+            <br>
+            <input type="text" class="form-control" formControlName="username" id="username" [ngClass]="{ 'is-invalid': submitted && this.loginForm.controls.username.errors }" />
+            <div *ngIf="submitted && this.loginForm.controls.username.errors">
+                <div *ngIf="this.loginForm.controls.username.errors.required">Username is required</div>
+            </div>
+        </div>
+        <br>
+        <div class="pswd">
+            <label for="password">Password</label>
+            <br>
+            <input type="text" class="form-control" formControlName="password" id="password" [ngClass]="{ 'is-invalid': submitted && this.loginForm.controls.password.errors }">
+            <div *ngIf="submitted && this.loginForm.controls.password.errors">
+                <div *ngIf="this.loginForm.controls.password.errors.required">Password is required</div>
+            </div>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
