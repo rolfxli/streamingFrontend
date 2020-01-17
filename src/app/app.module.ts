@@ -11,6 +11,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainTextComponent } from './home/main-text/main-text.component';
 import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 import { HomeHeaderComponent } from './home/home-header/home-header.component';
+import { DashboardHeaderComponent } from './dashboard/dashboard-header/dashboard-header.component';
+import { DashboardFooterComponent } from './dashboard/dashboard-footer/dashboard-footer.component';
+import { VideosComponent } from './videos/videos.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component';
     MainTextComponent,
     HomeFooterComponent,
     HomeHeaderComponent,
+    DashboardHeaderComponent,
+    DashboardFooterComponent,
+    VideosComponent,
   ],
   imports: [
     BrowserModule,
